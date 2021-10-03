@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>logo</title>
+  </head>
+
+  <body>
+    <main>
+      <div class="container">
+        <section>
+          <form id="form" method="POST" onsubmit="Client.handleSubmit(event)">
+            <input id="text-url" type="text" name="input" value="" placeholder="Enter URL" />
+            <button
+              type="submit"
+              class="button"
+            >
+              Submit
+            </button>
+          </form>
+        </section>
+
+        <section>
+          <h2 class="heading">Form Results:</h2>
+          <div id="loading"></div>
+          <div id="agreement"></div>
+          <div id="subjectivity"></div>
+          <div id="confidence"></div>
+          <div id="irony"></div>
+          <div id="score_tag"></div>
+        </section>
+      </div>
+    </main>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+        })
+      }
+    </script>
+  </body>
+</html>
