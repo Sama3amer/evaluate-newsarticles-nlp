@@ -7,13 +7,13 @@ async function handleSubmit(e) {
   debugger
     if (Client.urlChecker(url)) {
         let apiData = {};
-        await fetch('http://localhost:8081/api', {
+        await fetch("http://localhost:8081/api", {
             method: 'POST',
             credentials: 'same-origin',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                Accept: 'application/json'
+                // Accept: 'application/json'
             },
             body: JSON.stringify({ url })
         })
@@ -33,3 +33,4 @@ async function handleSubmit(e) {
 }
 
 export { handleSubmit }
+
