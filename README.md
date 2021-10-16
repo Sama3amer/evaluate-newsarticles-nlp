@@ -12,19 +12,43 @@ and its main goals are to help learning the following:
 - Using APIs and creating requests to external urls
 
 
-## Run project
-The project can be run in both development and production mode.
-### run in dev mode
-` $ npm run start`
+## Install npm
+```
+npm install
+```
+## Install loaders and plugins
+```
+# Choose the necessary installation for your development mode
+npm i -D @babel/core @babel/preset-env babel-loader
+npm i -D style-loader node-sass css-loader sass-loader
+npm i -D clean-webpack-plugin
+npm i -D html-webpack-plugin
+npm i -D mini-css-extract-plugin
+npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
+```
+## Sign up for an API key 
+Sign up for an API key at [meaningcloud.com](https://www.meaningcloud.com/developer/create-account)
 
-` $ npm run build-dev`
+## Configure environment variables using dotenv package
+	1. Install the dotenv package
+	```
+	npm install dotenv
+	```
+	2. Create a new `.env` file in the root of your project
+	3. Fill the `.env` file with your API key like this:
+	```
+	API_KEY=**************************
+	```
+## Start the project
+Build project
+    `npm run build-prod` 
 
-This first command will start the webpack dev server at port 8080 and the second command will start a server at port 3000 
-which enables us to do a post to the api.
+Run project
+    `npm start`
 
-**Note::** The web page can be accessed witht `localhost:8080`
+## For test
 
-### run in prod mode
-` $ npm run start`
+`npm run test`
 
-` $ npm run build-prod`
+## Open browser at http://localhost:8081/
+
