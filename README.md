@@ -39,16 +39,22 @@ Sign up for an API key at [meaningcloud.com](https://www.meaningcloud.com/develo
 	```
 	API_KEY=**************************
 	```
-## Start the project
-Build project
-    `npm run build-prod` 
+# Start the project
+after instllation, the production build (generatedist folder) is created with webpack using the following commands
+`npm run build-prod` ,
+`npm run start`
 
-Run project
-    `npm start`
+for developer environment , use the following commands (woll utillize the webpack-dev-server)
+    `npm run build-dev`
+
+this will automatically load the page.
+
+`npm run start`
+
+### Open browser at http://localhost:8080/
+
 
 ## For test
 
 `npm run test`
-
-## Open browser at http://localhost:8081/
 
