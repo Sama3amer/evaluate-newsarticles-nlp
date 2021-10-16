@@ -38,12 +38,8 @@ app.get('/', function (req, res) {
 app.post('/api', async (req, res) => {
 
     let  article_url  = req.body.url;
-    console.log(req.body.url);
-    console.log(article_url);
-
-
+   
     const url = `${API_URL}?key=${API_KEY}&url=${article_url}&lang=en`;
-console.log("API=====>",url);
     const response = await fetch(url)
     const mcData = await response.json()
     console.log(mcData)
