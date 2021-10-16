@@ -36,7 +36,12 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'));
 });
 app.post('/api', async (req, res) => {
-    const { article_url } = req.body;
+
+    let  article_url  = req.body.url;
+    console.log(req.body.url);
+    console.log(article_url);
+
+
     const url = `${API_URL}?key=${API_KEY}&url=${article_url}&lang=en`;
 console.log("API=====>",url);
     const response = await fetch(url)
