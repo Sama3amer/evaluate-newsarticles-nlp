@@ -1,11 +1,11 @@
-// TODO: Configure the environment variables
 const dotenv = require('dotenv');
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const mockAPIResponse = require('./mockAPI.js');
 const fetch = require('node-fetch');
+// const router = express.Router();
 
 dotenv.config();
 
@@ -32,73 +32,37 @@ app.use(
 app.use(express.static('dist'));
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-    // res.sendFile(path.resolve('src/client/views/index.html'));
+    // res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('dist/index.html'));
 });
-
-// INFO: a route that handling post request for new URL that coming from the frontend
 app.post('/api', async (req, res) => {
-    debugger
     const { article_url } = req.body;
     const url = `${API_URL}?key=${API_KEY}&url=${article_url}&lang=en`;
-
+console.log("API=====>",url);
     const response = await fetch(url)
     const mcData = await response.json()
     console.log(mcData)
-    // res.send(mcData)
-    //  server sends only specified data to the client with below codes
-      const projectData = {
+      const data = {
        score_tag : mcData.score_tag,
        agreement : mcData.agreement,
        subjectivity : mcData.subjectivity,
        confidence : mcData.confidence,
        irony : mcData.irony
       }
-      res.send(projectData);
+      res.send(data);
      
-    // try {
-    //     // { score_tag, agreement, subjectivity, confidence, irony }
-    //     // const response = await fetch(url)
-    //     // const jsonResponse = await response.json()
-    //     // console.log(jsonResponse)
-    //     // res.send(jsonResponse)
-    //     await fetch(url
-    //         // , {
-    //         // method: 'POST',
-    //         // mode: 'cors',
-    //         // headers: {
-    //         //     'Content-Type': 'application/json',
-    //         //     Accept: 'application/json'
-    //         // }
-    //     // }
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             const { score_tag, agreement, subjectivity, confidence, irony } = data;
-    //             res.send({
-    //                 score_tag: score_tag,
-    //                 agreement: agreement,
-    //                 subjectivity: subjectivity,
-    //                 confidence: confidence,
-    //                 irony: irony
-    //             });
-    //         });
-    // } catch (error) {
-    //     console.log(error.message);
-    // }
+  
 })
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse);
 });
+// app.use("/", router);
 
 app.listen(8081, (error) => {
-    debugger
     if (error) throw new Error(error);
     console.log(`Server listening on port ${PORT}!`);
 });
 
 
-// module.exports = {
-//     app
-// }
+module.exports =app;
